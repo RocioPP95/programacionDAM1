@@ -1,4 +1,3 @@
-import java.util.Iterator;
 
 public class ArrayUtils {
 	public static void imprimirArray(String[] cadena) {
