@@ -8,6 +8,10 @@ public class Gato extends Mascota {
 	public Gato() {
 		numVidas = 7;
 	}
+	
+	public Gato(Integer numVidasInicial) {
+		numVidas=numVidasInicial;
+	}
 
 	// métodos
 	public Integer getNumVidas() {
