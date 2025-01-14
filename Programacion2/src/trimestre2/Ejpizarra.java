@@ -23,6 +23,7 @@ public class Ejpizarra {
 		x.setTitulo(sc.nextLine());
 		System.out.println("Introduce el número de paginas");
 		x.setNumPagina(sc.nextInt());
+		System.out.println(x);
 
 		System.out.println("El precio es " + x.calcularPrecio() + " céntimos");
 		sc.close();

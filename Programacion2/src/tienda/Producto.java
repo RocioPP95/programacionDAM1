@@ -19,6 +19,10 @@ public class Producto {
 	public void setPrecio(Double precio) {
 		this.precio = precio;
 	}
+	@Override
+	public String toString() {
+		return "Producto [precio=" + precio + ", marca=" + marca + ", desceipcion=" + desceipcion + "]";
+	}
 	public String getMarca() {
 		return marca;
 	}

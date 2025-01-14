@@ -39,5 +39,11 @@ public class Libro {
 		this.numPagina = numPagina;
 	}
 
+	@Override
+	public String toString() {
+		return "Libro [titulo=" + titulo + ", autor=" + autor + "]";
+	}
+
 	
+
 }
