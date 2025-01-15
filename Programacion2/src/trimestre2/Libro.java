@@ -1,5 +1,7 @@
 package trimestre2;
 
+import java.util.Objects;
+
 public class Libro {
 	// Atributos((los datos que queremos guardar del objeto para trabajar con ellos
 	// ej:nombre, precio..))
@@ -42,6 +44,24 @@ public class Libro {
 	@Override
 	public String toString() {
 		return "Libro [titulo=" + titulo + ", autor=" + autor + "]";
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(autor, numPagina, titulo);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Libro other = (Libro) obj;
+		return Objects.equals(autor, other.autor) && Objects.equals(numPagina, other.numPagina)
+				&& Objects.equals(titulo, other.titulo);
 	}
 
 	

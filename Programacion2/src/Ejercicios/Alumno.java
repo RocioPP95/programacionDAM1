@@ -1,5 +1,7 @@
 package Ejercicios;
 
+import java.util.Objects;
+
 public class Alumno extends Persona {
 	private String dni;
 
@@ -42,21 +44,31 @@ public class Alumno extends Persona {
 	}
 
 	public Boolean validarDNI() {
-		Boolean correcto;
-		Boolean correcto1 = true;
 
-		correcto = true;
+		Boolean correcto = true;
+
 		if (dni.isEmpty() || dni == null || dni.length() < 9 || dni.length() > 9) {
-			correcto = false;
+			return correcto = false;
+
 		}
 
-		if (correcto == true) {
-			correcto1 = true;
-		}
-		if (correcto == false) {
-			correcto1 = false;
-		}
+		return correcto;
+	}
 
-		return correcto1;
+	@Override
+	public int hashCode() {
+		return Objects.hash(dni);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Alumno other = (Alumno) obj;
+		return Objects.equals(dni, other.dni);
 	}
 }
