@@ -1,9 +1,11 @@
 package Ejercicios;
 
 import java.util.Objects;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Alumno extends Persona {
-	private String dni;
+	static String dni;
 
 	private Double nota;
 	private Curso curso;
@@ -43,16 +45,26 @@ public class Alumno extends Persona {
 
 	}
 
-	public Boolean validarDNI() {
+	public static Boolean validarDNI() {
 
 		Boolean correcto = true;
-
-		if (dni.isEmpty() || dni == null || dni.length() < 9 || dni.length() > 9) {
+		/*
+		 * if (dni.isEmpty() || dni == null || dni.length() < 9 || dni.length() > 9) {
+		 * return correcto = false;
+		 * 
+		 * }
+		 * 
+		 * 
+		 * return correcto;
+		 */
+		String ejemploDni = "00000000T";
+		Pattern patron = Pattern.compile("[0-9]{7,8}[A-Z a-z]");
+		Matcher match = patron.matcher(ejemploDni);
+		if (match.matches()) {
+			return correcto;
+		} else {
 			return correcto = false;
-
 		}
-
-		return correcto;
 	}
 
 	@Override
@@ -71,4 +83,5 @@ public class Alumno extends Persona {
 		Alumno other = (Alumno) obj;
 		return Objects.equals(dni, other.dni);
 	}
+
 }

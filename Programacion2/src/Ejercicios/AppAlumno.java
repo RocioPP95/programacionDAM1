@@ -1,6 +1,5 @@
 package Ejercicios;
 
-import java.nio.file.spi.FileSystemProvider;
 import java.util.Scanner;
 
 public class AppAlumno {
@@ -26,6 +25,7 @@ public class AppAlumno {
 		 * 
 		 * System.out.println(x);
 		 */
+
 		String dni;
 		Alumno[] array = new Alumno[3];
 		Curso curso1 = new Curso();
@@ -34,8 +34,14 @@ public class AppAlumno {
 
 		for (int i = 0; i < array.length; i++) {
 			sc.nextLine();
-			System.out.println("Introduce el dni: ");
-			dni = sc.nextLine();
+
+			do {
+				System.out.println("Introduce el dni: ");
+				dni = sc.nextLine();
+				Alumno.validarDNI();
+
+			} while (Alumno.validarDNI() == false);
+
 			Alumno rosa = new Alumno(dni);
 			rosa.setDni(dni);
 			System.out.println("Introduce el nombre: ");
