@@ -1,4 +1,4 @@
-package Ejercicios;
+package AlumnoEj;
 
 import java.util.Scanner;
 

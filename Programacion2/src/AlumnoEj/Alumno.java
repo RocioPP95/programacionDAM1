@@ -1,11 +1,11 @@
-package Ejercicios;
+package AlumnoEj;
 
 import java.util.Objects;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Alumno extends Persona {
-	static String dni;
+	private String dni;
 
 	private Double nota;
 	private Curso curso;
@@ -13,6 +13,11 @@ public class Alumno extends Persona {
 	public Alumno(String dni) {
 		super();
 		this.dni = dni.toUpperCase();
+	}
+
+	@Override
+	public String toString() {
+		return "Alumno [nota=" + nota + ", curso=" + curso + "]";
 	}
 
 	public Curso getCurso() {
@@ -45,26 +50,23 @@ public class Alumno extends Persona {
 
 	}
 
-	public static Boolean validarDNI() {
+	public Boolean validarDNI() {
 
-		Boolean correcto = true;
-		/*
-		 * if (dni.isEmpty() || dni == null || dni.length() < 9 || dni.length() > 9) {
-		 * return correcto = false;
-		 * 
-		 * }
-		 * 
-		 * 
-		 * return correcto;
-		 */
-		String ejemploDni = "00000000T";
-		Pattern patron = Pattern.compile("[0-9]{7,8}[A-Z a-z]");
-		Matcher match = patron.matcher(ejemploDni);
-		if (match.matches()) {
-			return correcto;
-		} else {
-			return correcto = false;
+		if (dni.isEmpty() || dni == null || dni.length() < 9 || dni.length() > 9) {
+			return false;
+
 		}
+
+		return true;
+
+//		Pattern patron = Pattern.compile("[0-9]{7,8}[A-Z a-z]");
+//		Matcher match = patron.matcher(dni);
+//		if (match.matches()) {
+//			return true;
+//		} else {
+//			return false;
+//		}
+
 	}
 
 	@Override
@@ -84,4 +86,14 @@ public class Alumno extends Persona {
 		return Objects.equals(dni, other.dni);
 	}
 
+	public boolean validar() {
+		if (this.validarDNI() && this.curso != null && this.getNombre() != null
+				&& this.getNombre().length() >= 10 && this.getEdad() != null && this.getEdad() >= 12
+				&& this.getEdad() <= 65) {
+
+			return true;
+		}
+
+		return false;
+	}
 }

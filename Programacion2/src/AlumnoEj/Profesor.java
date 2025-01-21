@@ -1,4 +1,4 @@
-package Ejercicios;
+package AlumnoEj;
 
 public class Profesor extends Persona {
 	private String dni;
