@@ -4,7 +4,6 @@ public class Curso {
 	private Integer identificador;
 	private String descripcion;
 	private Alumno[] alumnos;
-	private Integer numeroAlumnos;
 
 	public Curso(Integer numeroAlumnos) {
 		super();

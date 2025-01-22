@@ -1,8 +1,6 @@
 
 import java.util.Scanner;
 
-import Ej31.Fecha;
-
 public class AppFecha {
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
