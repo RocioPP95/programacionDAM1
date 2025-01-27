@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class AppReloj {
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
-		Boolean formato24horas = false;
+		Boolean formato24horas = true;
 
 		Reloj reloj = new Reloj();
 
@@ -29,30 +29,30 @@ public class AppReloj {
 		if (reloj.check()) {
 			System.out.println("La hora " + reloj.toString() + " es correcta");
 		} else {
-			System.out.println("La hora " + reloj.toString() + " no es correcta");
+			System.out.println(reloj.toString() );
 		}
 
 		reloj.ponerEnHora(21, 82);
 		if (reloj.check()) {
 			System.out.println("La hora " + reloj.toString() + " es correcta");
 		} else {
-			System.out.println("La hora " + reloj.toString() + " no es correcta");
+			System.out.println( reloj.toString() );
 		}
 
 		reloj.ponerEnhora(17, 16, 15);
 		if (reloj.check()) {
 			System.out.println("La hora " + reloj.toString() + " es correcta");
 		} else {
-			System.out.println("La hora " + reloj.toString() + " no es correcta");
+			System.out.println( reloj.toString());
 		}
 
 		Reloj reloj1 = new Reloj(17, 16, 15);
 
 		if (reloj.equals(reloj1)) {
-			System.out.println("La hora " + reloj.toString() + " y l ahora " + reloj1.toString() + " son iguales");
+			System.out.println("La hora " + reloj.toString() + " y la hora " + reloj1.toString() + " son iguales");
 
 		} else {
-			System.out.println("La hora " + reloj.toString() + " y l ahora " + reloj1.toString() + " no son iguales");
+			System.out.println("La hora " + reloj.toString() + " y la hora " + reloj1.toString() + " no son iguales");
 		}
 
 		sc.close();

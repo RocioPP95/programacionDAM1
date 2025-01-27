@@ -27,18 +27,22 @@ public class Reloj {
 
 	public String toString() {
 		if (!check()) {
-			return "Hora no es correcta";
+			return "Hora incorrecta";
 		}
 
 		if (this.formato24Horas) {
-			if (horas < 10) {
-				String horasCeros = "0" + horas.toString();
-				return horasCeros + ":" + minutos + ":" + segundos;
+			if (horas < 10 && minutos < 10 && segundos < 10) {
+				return formatNum(horas) + ":" + formatNum(minutos) + ":" + formatNum(segundos) + "pm";
 			}
-		
-
 		}
-		return null;
+		if (horas == 0) {
+			return formatNum(horas + 12) + ":" + formatNum(minutos)+ ":" + formatNum(segundos) + "pm";
+		}
+		if (horas <= 12) {
+			return formatNum(horas) + ":" + formatNum(minutos) + ":" + formatNum(segundos) + "am";
+		} else {
+			return formatNum(horas - 12) + ":" + formatNum(minutos) + ":" + formatNum(segundos) + "pm";
+		}
 	}
 
 	public void setHoras(Integer horas) {
@@ -80,8 +84,7 @@ public class Reloj {
 	}
 
 	public void ponerEnhora(Integer horas, Integer minutos, Integer segundos) {
-		this.horas = horas;
-		this.minutos = minutos;
+		ponerEnHora(horas, minutos);
 		this.segundos = segundos;
 	}
 
@@ -89,7 +92,9 @@ public class Reloj {
 		if (horas >= 0 && horas <= 23 && minutos >= 0 && minutos <= 59 && segundos >= 0 && segundos <= 59) {
 			return true;
 
-		} else
+		}
+
+		else
 
 			return false;
 	}
@@ -97,6 +102,7 @@ public class Reloj {
 	@Override
 	public int hashCode() {
 		return Objects.hash(horas, minutos, segundos);
+
 	}
 
 	@Override
@@ -112,27 +118,11 @@ public class Reloj {
 				&& Objects.equals(segundos, other.segundos);
 	}
 
-	public String noCerosHoras() {
-		if (horas < 10) {
-			return "0" + horas.toString();
-
+	private String formatNum(Integer numero) {
+		if (numero < 10) {
+			return "0" + numero;
 		}
-		return null;
+		return "" + numero;
 	}
 
-	public String noCerosMinutos() {
-		if (horas < 10) {
-			return "0" + minutos.toString();
-
-		}
-		return null;
-	}
-
-	public String noCerosSegundos() {
-		if (horas < 10) {
-			return "0" + segundos.toString();
-
-		}
-		return null;
-	}
 }
