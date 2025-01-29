@@ -8,7 +8,7 @@ public class AppFecha {
 		Fecha fecha = new Fecha(0, 0, 0);
 		Integer dia;
 		Integer mes;
-		Integer año;
+		Integer aÃ±o;
 
 		do {
 
@@ -16,8 +16,8 @@ public class AppFecha {
 			fecha.setDia(sc.nextInt());
 			System.out.println("Introduce el mes actual:");
 			fecha.setMes(sc.nextInt());
-			System.out.println("Introduce el año actual:");
-			fecha.setAño(sc.nextInt());
+			System.out.println("Introduce el aï¿½o actual:");
+			fecha.setAÃ±o(sc.nextInt());
 			if (fecha.validarFecha()) {
 				System.out.println("La fecha es correcta!");
 			} else {
@@ -27,17 +27,17 @@ public class AppFecha {
 
 		} while (!fecha.validarFecha());
 
-		System.out.println(fecha.calcularSiglo(fecha.getAño()));
-		System.out.println("¿En que año nacistes?:");
-		System.out.println("Tienes " + fecha.calcularEdad(fecha.getAño(), sc.nextInt()) + " años");
+		System.out.println(fecha.calcularSiglo(fecha.getAÃ±o()));
+		System.out.println("ï¿½En que aÃ±o nacistes?:");
+		System.out.println("Tienes " + fecha.calcularEdad(fecha.getAÃ±o(), sc.nextInt()) + " aÃ±os");
 		System.out.println();
 
-		System.out.println("¿Cuántos dias tiene este año?");
+		System.out.println("ï¿½Cuï¿½ntos dias tiene este aï¿½o?");
 		if (fecha.esBisiesto(sc.nextInt())) {
-			System.out.println("El año es bisiesto");
+			System.out.println("El aÃ±o es bisiesto");
 
 		} else {
-			System.out.println("El año no es bibiesto");
+			System.out.println("El aï¿½o no es bibiesto");
 
 		}
 

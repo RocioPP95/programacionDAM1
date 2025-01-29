@@ -6,22 +6,22 @@ public class Fecha {
 
 	private Integer dia;
 	private Integer mes;
-	private Integer año;
-	private Integer diasAño;
-	private Integer añoNacimiento;
+	private Integer aÃ±o;
+	private Integer diasAÃ±o;
+	private Integer aÃ±oNacimiento;
 	private Integer siglo;
 	private Date fecha;
 
-	public Fecha(Integer dia, Integer mes, Integer año) {
+	public Fecha(Integer dia, Integer mes, Integer aÃ±o) {
 		super();
 		this.dia = dia;
 		this.mes = mes;
-		this.año = año;
+		this.aÃ±o = aÃ±o;
 	}
 
 	@Override
 	public String toString() {
-		return año + "-" + mes + "-" + dia;
+		return aÃ±o + "-" + mes + "-" + dia;
 	}
 
 	public Integer getDia() {
@@ -40,16 +40,16 @@ public class Fecha {
 		this.mes = mes;
 	}
 
-	public Integer getAño() {
-		return año;
+	public Integer getAÃ±o() {
+		return aÃ±o;
 	}
 
-	public void setAño(Integer año) {
-		this.año = año;
+	public void setAÃ±o(Integer aÃ±o) {
+		this.aÃ±o = aÃ±o;
 	}
 
 	public Boolean validarFecha() {
-		if ((año > 999 || año <= 2025) && (mes > 0 || mes <= 12) && (dia > 0 || dia <= 31)) {
+		if ((aÃ±o > 999 || aÃ±o <= 2025) && (mes > 0 || mes <= 12) && (dia > 0 || dia <= 31)) {
 			return true;
 
 		} else
@@ -57,23 +57,23 @@ public class Fecha {
 
 	}
 
-	public Integer calcularEdad(Integer año, Integer añoNacimiento) {
-		return año - añoNacimiento;
+	public Integer calcularEdad(Integer aÃ±o, Integer aÃ±oNacimiento) {
+		return aÃ±o - aÃ±oNacimiento;
 
 	}
 
-	public String calcularSiglo(Integer año) {
-		if (año % 100 == 0) {
-			siglo = año / 100;
+	public String calcularSiglo(Integer aÃ±o) {
+		if (aÃ±o % 100 == 0) {
+			siglo = aÃ±o / 100;
 		} else {
-			siglo = (año / 100) + 1;
+			siglo = (aÃ±o / 100) + 1;
 		}
 		return "Estamos en el siglo: " + siglo;
 
 	}
 
-	public Boolean esBisiesto(Integer diasAÑo) {
-		if ((año / 4 == 0 && año / 100 != 0) || (año / 400 == 0)) {
+	public Boolean esBisiesto(Integer diasAÃ±o) {
+		if ((aÃ±o / 4 == 0 && aÃ±o / 100 != 0) || (aÃ±o / 400 == 0)) {
 			return true;
 		}
 		return false;
@@ -81,7 +81,7 @@ public class Fecha {
 
 //te dice la fecha y hora actual pero no lo hemos dado aun
 	public Date obtenerFechaActual() {
-		return new Date(año);
+		return new Date(aÃ±o);
 
 	}
 

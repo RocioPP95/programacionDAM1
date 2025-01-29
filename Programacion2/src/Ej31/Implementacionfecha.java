@@ -4,7 +4,7 @@ public interface Implementacionfecha {
 
 	public Integer sumarDias(Integer cantidad);
 	public Integer sumarMeses(Integer meses);
-	public Integer sumarAÑos(Integer años);
+	public Integer sumarAÃ±os(Integer aÃ±os);
 	public Boolean validarFecha();
 	public Boolean isBisiesto();
 	public String toString();

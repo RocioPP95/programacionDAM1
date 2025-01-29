@@ -18,16 +18,16 @@ public class App {
 		Catalogo catalogo = new Catalogo();
 		Integer opcion;
 		do {
-			System.out.println("¿Qúe quieres comprar?");
+			System.out.println("ï¿½Qï¿½e quieres comprar?");
 			catalogo.mostrar();
 			Integer idProducto = sc.nextInt();
 			Producto elegido = catalogo.obtenerProducto(idProducto);
-			System.out.println("¿Cuántas unidades?");
+			System.out.println("ï¿½Cuï¿½ntas unidades?");
 			Integer cantidad = sc.nextInt();
 
-			carrito.añadirProducto(elegido, cantidad);
+			carrito.aÃ±adirProducto(elegido, cantidad);
 
-			System.out.println("¿Quieres comprar más(0 si, 1 no)?");
+			System.out.println("ï¿½Quieres comprar mï¿½s(0 si, 1 no)?");
 			opcion = sc.nextInt();
 		} while (opcion != 0);
 
