@@ -19,13 +19,13 @@ public class Ejpizarra {
 
 		System.out.println("Introduce el nombre del autor: ");
 		x.setAutor(sc.nextLine());
-		System.out.println("Introduce el título del libro: ");
+		System.out.println("Introduce el tÃ­tulo del libro: ");
 		x.setTitulo(sc.nextLine());
-		System.out.println("Introduce el número de paginas");
+		System.out.println("Introduce el nÃºmero de paginas");
 		x.setNumPagina(sc.nextInt());
 		System.out.println(x);
 
-		System.out.println("El precio es " + x.calcularPrecio() + " céntimos");
+		System.out.println("El precio es " + x.calcularPrecio() + " cÃ©ntimos");
 		sc.close();
 
 	}

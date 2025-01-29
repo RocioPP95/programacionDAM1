@@ -3,7 +3,7 @@ package Semaforo;
 public class Semaforo {
 	public static final String ROJO = "rojo";
 	public static final String VERDE = "verde";
-	public static final String AMBAR = "ámbar";
+	public static final String AMBAR = "ï¿½mbar";
 
 	private String color;
 	private Boolean parpadeando;
@@ -18,15 +18,15 @@ public class Semaforo {
 	@Override
 	public String toString() {
 		if (color.equals("rojo")) {
-			return "Semáforo en ROJO";
+			return "Semaforo en ROJO";
 		}
 		if (color.equals("verde")) {
-			return "Semáforo en VERDE";
+			return "Semaforo en VERDE";
 		}
-		if (color.equals("ámbar") && parpadeando == false) {
-			return "Semáforo  en ÁMBAR";
+		if (color.equals("ambar") && parpadeando == false) {
+			return "Semaforo  en AMBAR";
 		} else
-			return "Semáforo en ÁMBAR parpadeando ";
+			return "Semaforo en AMBAR parpadeando ";
 	}
 
 	public String getColor() {
@@ -34,7 +34,7 @@ public class Semaforo {
 	}
 
 	public void setColor(String color) {
-		if (!color.equals("rojo") && !color.equals("verde") && !color.equals("ámbar")) {
+		if (!color.equals("rojo") && !color.equals("verde") && !color.equals("ï¿½mbar")) {
 
 		} else
 			this.color = color;
