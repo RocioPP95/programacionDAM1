@@ -1,28 +1,27 @@
 package AlumnoEj;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Curso {
 	private Integer identificador;
 	private String descripcion;
-	private Alumno[] alumnos;
+	private List<Alumno>alumnos;
 
 	public Curso(Integer numeroAlumnos) {
 		super();
-		alumnos = new Alumno[numeroAlumnos];
+		alumnos=new ArrayList<Alumno>();
 	}
 
 	public void addAlumno(Alumno x) {
-		for (int i = 0; i < alumnos.length; i++) {
-			if (alumnos[i] == null) {
-				alumnos[i] = x;
-				break;
-			}
-		}
+		alumnos.add(x);
 
 	}
 
-	public Alumno[] getAlumnos() {
+	public List<Alumno> getAlumnos() {
 		return alumnos;
 	}
+
 
 	@Override
 	public String toString() {

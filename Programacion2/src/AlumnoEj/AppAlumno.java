@@ -1,5 +1,7 @@
 package AlumnoEj;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class AppAlumno {
@@ -27,7 +29,7 @@ public class AppAlumno {
 //		System.out.println("Introduce el identificador: ");
 //		curso.setIdentificador(sc.nextInt());
 //		sc.nextLine();
-//		System.out.println("Introducela descripción: ");
+//		System.out.println("Introducela descripciï¿½n: ");
 //		curso.setDescripcion(sc.nextLine());
 //
 //		System.out.println("Introduce el nombre del profesor:");
@@ -37,17 +39,16 @@ public class AppAlumno {
 //		profe.setEdad(sc.nextInt());
 //
 //		System.out.println(x);
-
-//		Alumno[] array = new Alumno[3];
-
 		Curso curso1 = new Curso(3);
 
 		curso1.setDescripcion("DAM-DAW");
 		curso1.setIdentificador(1);
+		
+		List<Alumno> listaAlumnos = new ArrayList<>();
 
-		for (int i = 0; i < curso1.getAlumnos().length; i++) {
+		for (int i = 0; i < 3; i++) {
 			sc.nextLine();
-			// ESTO SIGNIFICA DECLARARLO PERO NO CREÁNDOLO
+			// ESTO SIGNIFICA DECLARARLO PERO NO CREï¿½NDOLO
 			Alumno rosa;
 			do {
 				System.out.println("Introduce el dni: ");
@@ -64,24 +65,24 @@ public class AppAlumno {
 			rosa.setCurso(curso1);
 
 			// la siguiente linea es igual a array[i]=rosa
-			curso1.addAlumno(rosa);
+			listaAlumnos.add(rosa);
 		}
-		for (int i = 0; i < curso1.getAlumnos().length; i++) {
-			for (int j = i + 1; j < curso1.getAlumnos().length; j++) {
-				if (curso1.getAlumnos()[i].equals(curso1.getAlumnos()[j])) {
+		for (int i = 0; i < listaAlumnos.size(); i++) {
+			for (int j = i + 1; j < listaAlumnos.size(); j++) {
+				if (listaAlumnos.get(i).equals(listaAlumnos.get(j))) {
 					System.out.println("Error");
 				}
 
 			}
 		}
-		for (int i = 0; i < curso1.getAlumnos().length; i++) {
-			if (curso1.getAlumnos()[i].validar() == false) {
-				System.out.println("El alumno" + curso1.getAlumnos()[i] + " tiene datos son incorrectos.");
+		for (int i = 0; i < listaAlumnos.size(); i++) {
+			if (listaAlumnos.get(i).validar() == false) {
+				System.out.println("El alumno" + listaAlumnos.get(i) + " tiene datos son incorrectos.");
 			}
 		}
-		System.out.println(curso1.getAlumnos()[0].toString());
-		System.out.println(curso1.getAlumnos()[1].toString());
-		System.out.println(curso1.getAlumnos()[2].toString());
+		System.out.println(listaAlumnos.get(0).toString());
+		System.out.println(listaAlumnos.get(1).toString());
+		System.out.println(listaAlumnos.get(2).toString());
 
 		sc.close();
 	}
