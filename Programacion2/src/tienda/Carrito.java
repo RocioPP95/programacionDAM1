@@ -16,7 +16,7 @@ public class Carrito {
 		compra = new Producto[90];
 	}
 
-	public void aÃ±adirProducto(Producto producto, Integer cantidad) {
+	public void añadirProducto(Producto producto, Integer cantidad) {
 		compra[numArticulos] = producto;
 		total = total + producto.getPrecio() * cantidad;
 		numArticulos++;

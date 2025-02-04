@@ -5,11 +5,8 @@ public class Partido {
 	private Equipo equipoVisitante;
 	private Resultado resultado;
 
-	public Partido(Equipo equipoLocal, Equipo equipoVisitante, Resultado resultado) {
-		super();
-		this.equipoLocal = equipoLocal;
-		this.equipoVisitante = equipoVisitante;
-		this.resultado = resultado;
+	public Partido() {
+		
 	}
 
 	public Equipo getEquipoLocal() {
@@ -38,7 +35,7 @@ public class Partido {
 
 	@Override
 	public String toString() {
-		return equipoLocal + " vs " + equipoVisitante + resultado;
+		return equipoLocal.getNombre() + " vs " + equipoVisitante.getNombre() + resultado;
 	}
 
 	public Equipo getEquipoGanador() {

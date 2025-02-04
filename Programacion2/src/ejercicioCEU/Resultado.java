@@ -32,7 +32,7 @@ public class Resultado {
 
 	@Override
 	public String toString() {
-		return golesLocales + "-" + golesVisitantes;
+		return "[" + golesLocales + "-" + golesVisitantes + "]";
 	}
 
 	public Integer getGolesLocales() {

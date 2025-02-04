@@ -7,12 +7,29 @@ import java.util.Objects;
 public class Equipo {
 	private String nombre;
 	private Jugador capitan;
-	private List<String> listaJugadores;
+	private List<Jugador> listaJugadores;
+	private static String competicion;
+
+	public static String getCompeticion() {
+		return competicion;
+	}
+
+	public static void setCompeticion(String competicion) {
+		Equipo.competicion = competicion;
+	}
 
 	public Equipo(String nombre) {
 		this.listaJugadores = new ArrayList<>();
 		this.nombre = nombre;
 
+	}
+
+	public List<Jugador> getListaJugadores() {
+		return listaJugadores;
+	}
+
+	public void setListaJugadores(List<Jugador> listaJugadores) {
+		this.listaJugadores = listaJugadores;
 	}
 
 	public String getNombre() {
@@ -22,7 +39,7 @@ public class Equipo {
 	@Override
 	public String toString() {
 
-		return nombre + "- Capitán: " + capitan + "- Jugadores: " + listaJugadores;
+		return nombre + "- Capitán: " + capitan.getNombre() + "- Jugadores: " + listaJugadores;
 	}
 
 	public void setNombre(String nombre) {
