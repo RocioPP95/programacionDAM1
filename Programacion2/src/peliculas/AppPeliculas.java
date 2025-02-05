@@ -1,5 +1,9 @@
 package peliculas;
 
+import java.util.Scanner;
+
+import ejercicioCEU.Equipo;
+
 public class AppPeliculas {
 	public static void main(String[] args) {
 
@@ -57,11 +61,22 @@ public class AppPeliculas {
 		peli1.setTitulo("Muerte en la sombra");
 
 		System.out.println(peli.getListaActores());
-		System.out.println(guionista1.getSueldo() + " " + guionista1.getNacionalidad());
+		System.out.println(guionista1.getSueldo() + "€, " + guionista1.getNacionalidad());
 		peli1.getListaActores().remove(2);
 		peli.getListaActores().add(actor3);
 
 		System.out.println(peli.getListaActores());
 		System.out.println(peli1.getListaActores());
 	}
+
+	// SI TUVIESE UN SCANNER TENDRIA QUE CERRARLO ANTES DE ESTE METODO
+	// no hace falta poner .seguido de algo para poner el siguiente metodo solo hace
+	// falta poner el metodo                
+//	private static Actor crearActor(String nombre, String nacionalidad, Integer año) {
+//		Actor x= new Actor();
+//		x.setNombre(nombre);
+//		x.setNacionalidad(nacionalidad);
+//		x.setAñoNacimiento(año);
+//		return x;
+//}
 }

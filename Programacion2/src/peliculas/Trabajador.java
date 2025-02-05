@@ -11,19 +11,18 @@ public abstract class Trabajador {
 	private String nacionalidad;
 
 	public Trabajador() {
-		
+
 	}
 
 	@Override
 	public String toString() {
-		return "Trabajador [nombre=" + nombre + ", añoNacimiento=" + añoNacimiento + ", nacionalidad=" + nacionalidad
-				+ "]";
+		return nombre;
 	}
 
 	public String getNombre() {
 		return nombre;
 	}
-
+                                                                          
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
