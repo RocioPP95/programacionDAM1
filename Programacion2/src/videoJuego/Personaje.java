@@ -1,19 +1,17 @@
 package videoJuego;
 
+import java.util.Objects;
+
 public abstract class Personaje {
 
-	String nombre;
-	private String codigo;
-	private Integer puntosVida;
-	private Integer frecuencia;
-	private Integer da�o;
+	protected String nombre;
+	protected String codigo;
+	protected Integer puntosVida;
+	protected Integer frecuencia;
+	protected Integer daño;
 
-	public Personaje(String nombre, String codigo) {
-		super();
-		this.nombre = nombre;
-		this.codigo = codigo;
-		this.da�o=10;
-		this.frecuencia=5;
+	public Personaje() {
+
 	}
 
 	public String getNombre() {
@@ -32,8 +30,6 @@ public abstract class Personaje {
 		return puntosVida;
 	}
 
-	
-
 	public void setPuntosVida(Integer puntosVida) {
 		this.puntosVida = puntosVida;
 	}
@@ -51,18 +47,38 @@ public abstract class Personaje {
 
 	}
 
-	public abstract Integer cambiarPuntosVida();
+	@Override
+	public String toString() {
+		return nombre + codigo + ", puntosVida=" + puntosVida + ", frecuencia=" + frecuencia + ", daño=" + daño;
+	}
 
-	public void quitarPuntosVida(Integer da�o, Integer Frecuencia) {
+	
 
-		this.puntosVida = this.puntosVida - da�o * frecuencia;
+	public Integer getDaño() {
+		return daño;
+	}
 
+	public void setDaño(Integer daño) {
+		this.daño = daño;
 	}
 
 	@Override
-	public String toString() {
-		return  nombre  + codigo + ", puntosVida=" + puntosVida + ", frecuencia="
-				+ frecuencia + ", da�o=" + da�o ;
+	public int hashCode() {
+		return Objects.hash(codigo, nombre);
 	}
-	
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Personaje other = (Personaje) obj;
+		return Objects.equals(codigo, other.codigo) && Objects.equals(nombre, other.nombre);
+	}
+
+
+
 }

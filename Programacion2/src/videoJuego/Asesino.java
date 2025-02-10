@@ -3,14 +3,17 @@ package videoJuego;
 public class Asesino extends Personaje {
 
 	public Asesino(String nombre, String codigo) {
-		super(nombre, codigo);
-		// TODO Auto-generated constructor stub
+		this.nombre=nombre;
+		this.codigo=codigo;
+		this.puntosVida=100;
+		this.frecuencia=5;
+		this.daño=10;
 	}
 
-	@Override
-	public Integer cambiarPuntosVida() {
-		
-		return 100;
-	}
+
+
+	
+	
+	
 
 }

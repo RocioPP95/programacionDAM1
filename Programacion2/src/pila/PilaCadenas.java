@@ -11,7 +11,7 @@ public class PilaCadenas {
 		this.litaCadenas = new ArrayList<>();
 	}
 
-	public void añadirCadena(String cadena) {
+	public void aÃ±adirCadena(String cadena) {
 		this.litaCadenas.add(cadena);
 
 	}
@@ -20,7 +20,7 @@ public class PilaCadenas {
 		return this.litaCadenas.remove(this.litaCadenas.size() - 1);
 	}
 
-	public Integer getTamaño() {
+	public Integer getTamaÃ±o() {
 		return this.litaCadenas.size();
 
 	}

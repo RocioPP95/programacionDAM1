@@ -7,16 +7,16 @@ import java.util.List;
 public class AppCola {
 	public static void main(String[] args) {
 		ColaCadenas lista = new ColaCadenas();
-		lista.añadirCadenA("primero");
-		lista.añadirCadenA("segundo");
+		lista.aÃ±adirCadenA("primero");
+		lista.aÃ±adirCadenA("segundo");
 		System.out.println(lista.sacarCadena());
-		lista.añadirCadenA("tercero");
+		lista.aÃ±adirCadenA("tercero");
 
-		while (lista.getTamaño() != 0) {
+		while (lista.getTamaÃ±o() != 0) {
 			lista.sacarCadena();
 
 		}
-		lista.añadirCadenA("cuarto");
+		lista.aÃ±adirCadenA("cuarto");
 		System.out.println(lista.toString());
 	}
 }

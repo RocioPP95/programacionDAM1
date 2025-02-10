@@ -14,8 +14,35 @@ public class AppJuego {
 		amarillo.getListaPersonajes().add(fran);
 		
 		Parasito blas= new Parasito("Blas","B69");
+		
 		System.out.println(blas.toString());
 		
 		
+		amarillo.getListaPersonajes().add(blas);
+		
+		Integer puntosfinal=amarillo.sumarPuntos();
+		System.out.println(puntosfinal +" puntos final");
+		
+		if (amarillo.comprobarMaxPersonajes(blas)) {
+			amarillo.getListaPersonajes().add(blas);
+		}
+		
+		System.out.println(amarillo.getListaPersonajes());
+		
+		Parasito maria = new Parasito("maria", "35b");
+		Parasito ana= new Parasito("ana","87y");
+		
+		if (amarillo.comprobarMaxPersonajes(maria)) {
+			amarillo.getListaPersonajes().add(maria);	
+	
+			}
+		if (amarillo.comprobarMaxPersonajes(ana)) {
+			amarillo.getListaPersonajes().add(ana);
+			
+		}
+			
+		
+		System.out.println(amarillo.getListaPersonajes());
+		System.out.println(amarillo.sumarPuntos()+" puntos final");
 	}
 }

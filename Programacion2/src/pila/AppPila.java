@@ -3,14 +3,14 @@ package pila;
 public class AppPila {
 	public static void main(String[] args) {
 		PilaCadenas lista = new PilaCadenas();
-		lista.añadirCadena("primero");
-		lista.añadirCadena("segundo");
+		lista.aÃ±adirCadena("primero");
+		lista.aÃ±adirCadena("segundo");
 		System.out.println(lista.sacarCadena());
-		lista.añadirCadena("tercero");
-		while (lista.getTamaño()!=0) {
+		lista.aÃ±adirCadena("tercero");
+		while (lista.getTamaÃ±o()!=0) {
 			System.out.println("Estoy sacando: "+ lista.sacarCadena()); 
 		}
-		lista.añadirCadena("cuarto");
+		lista.aÃ±adirCadena("cuarto");
 		System.out.println(lista.toString());
 	}
 }

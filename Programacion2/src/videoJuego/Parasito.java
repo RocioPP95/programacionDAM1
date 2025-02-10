@@ -1,16 +1,21 @@
 package videoJuego;
 
-public class Parasito extends Personaje{
+public class Parasito extends Personaje {
 
+	
 	public Parasito(String nombre, String codigo) {
-		super(nombre, codigo);
-		// TODO Auto-generated constructor stub
+		this.nombre=nombre;
+		this.codigo=codigo;
+		this.puntosVida=200;
+		this.frecuencia=1;
+		this.daño=2;
+		
 	}
 
-	@Override
-	public Integer cambiarPuntosVida() {
-		
-		return 200;
-	}
+	
+
+	
+	
+	
 
 }

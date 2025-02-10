@@ -11,7 +11,7 @@ public class ColaCadenas {
 		this.listaCadenas = new ArrayList<>();
 	}
 
-	public void añadirCadenA(String cadena) {
+	public void aÃ±adirCadenA(String cadena) {
 		this.listaCadenas.add(cadena);
 
 	}
@@ -20,7 +20,7 @@ public class ColaCadenas {
 		return listaCadenas.remove(0);
 	}
 
-	public Integer getTamaño() {
+	public Integer getTamaÃ±o() {
 		return listaCadenas.size();
 
 	}

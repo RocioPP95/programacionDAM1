@@ -9,41 +9,41 @@ public class AppPeliculas {
 
 		Actor actor1 = new Actor();
 		actor1.setNombre("Blas Blau");
-		actor1.setNacionalidad("España");
-		actor1.setAñoNacimiento(1983);
+		actor1.setNacionalidad("Espaï¿½a");
+		actor1.setAÃ±oNacimiento(1983);
 
 		Actor actor2 = new Actor();
 		actor2.setNombre("Laura Pozo");
 		actor2.setNacionalidad("Italia");
-		actor2.setAñoNacimiento(1981);
+		actor2.setAÃ±oNacimiento(1981);
 
 		Actor actor3 = new Actor();
 		actor3.setNombre("Marcel Cade");
 		actor3.setNacionalidad("Suiza");
-		actor3.setAñoNacimiento(2001);
+		actor3.setAÃ±oNacimiento(2001);
 
 		Actor actor4 = new Actor();
 		actor4.setNombre("Violeta Volo");
 		actor4.setNacionalidad("Rusia");
-		actor4.setAñoNacimiento(1999);
+		actor4.setAÃ±oNacimiento(1999);
 
 		Director director = new Director();
 		director.setNombre("Sara");
 		director.setNacionalidad("Portugal");
-		director.setAñoNacimiento(1994);
+		director.setAÃ±oNacimiento(1994);
 
 		Guionista guionista1 = new Guionista();
 		guionista1.setNombre("Marco Smith");
 		guionista1.setNacionalidad("Reino Unido");
-		guionista1.setAñoNacimiento(1988);
+		guionista1.setAÃ±oNacimiento(1988);
 
 		Guionista guionista2 = new Guionista();
 		guionista2.setNombre("Cheng Shu");
 		guionista2.setNacionalidad("China");
-		guionista2.setAñoNacimiento(1977);
+		guionista2.setAÃ±oNacimiento(1977);
 
 		Pelicula peli = new Pelicula();
-		peli.setAñoEstreno(2027);
+		peli.setAÃ±oEstreno(2027);
 		peli.setDirector(director);
 		peli.setGuionista(guionista1);
 		peli.getListaActores().add(actor1);
@@ -51,7 +51,7 @@ public class AppPeliculas {
 		peli.setTitulo("Do you know Joe Blas?");
 
 		Pelicula peli1 = new Pelicula();
-		peli1.setAñoEstreno(2027);
+		peli1.setAÃ±oEstreno(2027);
 		peli1.setDirector(director);
 		peli1.setGuionista(guionista2);
 		peli1.getListaActores().add(actor1);
@@ -61,7 +61,7 @@ public class AppPeliculas {
 		peli1.setTitulo("Muerte en la sombra");
 
 		System.out.println(peli.getListaActores());
-		System.out.println(guionista1.getSueldo() + "€, " + guionista1.getNacionalidad());
+		System.out.println(guionista1.getSueldo() + "ï¿½, " + guionista1.getNacionalidad());
 		peli1.getListaActores().remove(2);
 		peli.getListaActores().add(actor3);
 
@@ -72,11 +72,11 @@ public class AppPeliculas {
 	// SI TUVIESE UN SCANNER TENDRIA QUE CERRARLO ANTES DE ESTE METODO
 	// no hace falta poner .seguido de algo para poner el siguiente metodo solo hace
 	// falta poner el metodo                
-//	private static Actor crearActor(String nombre, String nacionalidad, Integer año) {
+//	private static Actor crearActor(String nombre, String nacionalidad, Integer aï¿½o) {
 //		Actor x= new Actor();
 //		x.setNombre(nombre);
 //		x.setNacionalidad(nacionalidad);
-//		x.setAñoNacimiento(año);
+//		x.setAï¿½oNacimiento(aï¿½o);
 //		return x;
 //}
 }

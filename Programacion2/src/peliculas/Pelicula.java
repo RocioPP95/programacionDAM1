@@ -6,7 +6,7 @@ import java.util.List;
 import ejercicioCEU.Jugador;
 
 public class Pelicula {
-	private Integer añoEstreno;
+	private Integer aÃ±oEstreno;
 	private String titulo;
 	private Guionista guionista;
 	private Director director;
@@ -18,12 +18,12 @@ public class Pelicula {
 		this.listaActores = new ArrayList<>();
 	}
 
-	public Integer getAñoEstreno() {
-		return añoEstreno;
+	public Integer getAÃ±oEstreno() {
+		return aÃ±oEstreno;
 	}
 
-	public void setAñoEstreno(Integer añoEstreno) {
-		this.añoEstreno = añoEstreno;
+	public void setAÃ±oEstreno(Integer aÃ±oEstreno) {
+		this.aÃ±oEstreno = aÃ±oEstreno;
 	}
 
 	public String getTitulo() {

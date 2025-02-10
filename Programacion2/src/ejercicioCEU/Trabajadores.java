@@ -2,7 +2,7 @@ package ejercicioCEU;
 
 public abstract class Trabajadores {
 	private String nombre;
-	private Integer añoNacimiento;
+	private Integer aÃ±oNacimiento;
 	private String nacionalidad;
 	
 	
@@ -12,11 +12,11 @@ public abstract class Trabajadores {
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-	public Integer getAñoNacimiento() {
-		return añoNacimiento;
+	public Integer getAÃ±oNacimiento() {
+		return aÃ±oNacimiento;
 	}
-	public void setAñoNacimiento(Integer añoNacimiento) {
-		this.añoNacimiento = añoNacimiento;
+	public void setAÃ±oNacimiento(Integer aÃ±oNacimiento) {
+		this.aÃ±oNacimiento = aÃ±oNacimiento;
 	}
 	public String getNacionalidad() {
 		return nacionalidad;

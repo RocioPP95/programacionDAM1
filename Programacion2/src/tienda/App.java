@@ -25,7 +25,7 @@ public class App {
 			System.out.println("¿Cuántas unidades?");
 			Integer cantidad = sc.nextInt();
 
-			carrito.a�adirProducto(elegido, cantidad);
+			carrito.añadirProducto(elegido, cantidad);
 
 			System.out.println("¿Quieres comprar más(0 si, 1 no)?");
 			opcion = sc.nextInt();
