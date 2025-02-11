@@ -5,7 +5,7 @@ import java.util.List;
 
 import ejercicioCEU.Jugador;
 
-public class Pelicula {
+public class Pelicula { 
 	private Integer añoEstreno;
 	private String titulo;
 	private Guionista guionista;
