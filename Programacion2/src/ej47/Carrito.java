@@ -10,10 +10,10 @@ public class Carrito {
 	private LocalDate fechaActualizacion;
 	private List<Articulo> listaArticulos;
 	private Cliente cliente;
-	
+
 	public Carrito(Cliente cliente) {
 		super();
-		this.cliente=cliente;
+		this.cliente = cliente;
 		this.fechaCreacion = LocalDate.now();
 		this.listaArticulos = new ArrayList<>();
 		this.fechaActualizacion = LocalDate.now();
@@ -61,13 +61,19 @@ public class Carrito {
 	}
 
 	public Double getPrecioMedio() {
-		return getTotal() / this.listaArticulos.size();
+		if (this.listaArticulos.isEmpty()) {
+			return 0.0;
+
+		} else
+			return getTotal() / this.listaArticulos.size();
 	}
 
 	public String toString() {
-		
-		
-		return "Nombre: " + cliente.getNombre() + " DNI:" + cliente.getDni() + getTotal() + "euros" + this.fechaActualizacion;
+		DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+		String fecha = this.fechaActualizacion.format(formato);
+
+		return "Nombre: " + cliente.getNombre() + " DNI:" + cliente.getDni() + " total: " + getTotal() + "euros"
+				+ " fecha: " + fecha;
 	}
 
 	public void aadArticulo(Articulo x) {
@@ -75,10 +81,12 @@ public class Carrito {
 	}
 
 	public void borrarArticulo(Integer x) {
-		this.listaArticulos.remove(x);
+		this.listaArticulos.remove(x.intValue());
 
 	}
+
 	public void vaciarCesta() {
-		this.listaArticulos.removeAll(listaArticulos);
+		this.listaArticulos.clear();
+		// this.listaArticulos.removeAll(listaArticulos);
 	}
 }
