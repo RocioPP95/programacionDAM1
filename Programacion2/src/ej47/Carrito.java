@@ -3,26 +3,25 @@ package ej47;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Carrito {
 	private LocalDate fechaCreacion;
 	private LocalDate fechaActualizacion;
-	private List<Articulo> listaArticulos;
+	private Set<Articulo>articulos;
 	private Cliente cliente;
 
 	public Carrito(Cliente cliente) {
 		super();
 		this.cliente = cliente;
 		this.fechaCreacion = LocalDate.now();
-		this.listaArticulos = new ArrayList<>();
 		this.fechaActualizacion = LocalDate.now();
+		this.articulos=new HashSet<>();
 
 	}
 
-	private void actualizar() {
-		this.fechaActualizacion = LocalDate.now();
-	}
 
 	public LocalDate getFechaCreacion() {
 		return fechaCreacion;
@@ -40,32 +39,30 @@ public class Carrito {
 		this.fechaActualizacion = fechaActualizacion;
 	}
 
-	public List<Articulo> getListaArticulos() {
-		return listaArticulos;
-	}
+	
 
-	public void setListaArticulos(List<Articulo> listaArticulos) {
-		this.listaArticulos = listaArticulos;
+	public void setListaArticulos( Set<Articulo>articulos) {
+		this.articulos = articulos;
 	}
 
 	public Integer getCantidad() {
-		return this.listaArticulos.size();
+		return this.articulos.size();
 	}
 
 	public Double getTotal() {
 		Double total = 0.0;
-		for (Articulo articulo : listaArticulos) {
+		for (Articulo articulo : articulos) {
 			total = total + articulo.getPrecio();
 		}
 		return total;
 	}
 
 	public Double getPrecioMedio() {
-		if (this.listaArticulos.isEmpty()) {
+		if (this.articulos.isEmpty()) {
 			return 0.0;
 
 		} else
-			return getTotal() / this.listaArticulos.size();
+			return getTotal() / this.articulos.size();
 	}
 
 	public String toString() {
@@ -77,16 +74,27 @@ public class Carrito {
 	}
 
 	public void aadArticulo(Articulo x) {
-		this.listaArticulos.add(x);
+		this.articulos.add(x);
+		this.fechaActualizacion=LocalDate.now();
 	}
 
-	public void borrarArticulo(Integer x) {
-		this.listaArticulos.remove(x.intValue());
+	public void borrarArticulo(Articulo articulo) {
+		this.articulos.remove(articulo);
 
 	}
+
+	public Set<Articulo> getArticulos() {
+		return articulos;
+	}
+
+
+	public void setArticulos(Set<Articulo> articulos) {
+		this.articulos = articulos;
+	}
+
 
 	public void vaciarCesta() {
-		this.listaArticulos.clear();
+		this.articulos.clear();
 		// this.listaArticulos.removeAll(listaArticulos);
 	}
 }

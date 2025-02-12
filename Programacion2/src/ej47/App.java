@@ -16,7 +16,7 @@ public class App {
 		carro.aadArticulo(ropa);
 		carro.aadArticulo(ropa);
 		
-		System.out.println(carro.getListaArticulos());
+		System.out.println(carro.getArticulos());
 		
 		Libro libro= new Libro();
 		libro.setPrecio(15.00);
@@ -25,15 +25,15 @@ public class App {
 		 
 		carro.aadArticulo(libro);
 		
-		System.out.println(carro.getListaArticulos());
+		System.out.println(carro.getArticulos());
 		
-		carro.borrarArticulo(1);
+		carro.borrarArticulo(ropa);
 		
-		System.out.println(carro.getListaArticulos());
+		System.out.println(carro.getArticulos());
 		
 		carro.vaciarCesta();
 		
-		System.out.println(carro.getPrecioMedio());
+		System.out.println(carro.getPrecioMedio() + "€");
 	
 		
 		
