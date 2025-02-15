@@ -19,24 +19,39 @@ public class ej49 {
 			cadenas.add(sc.nextLine());
 		}
 		
-
+		System.out.println(cadenas.toString());
 		
-		System.out.println();
+		//tengo que hacer uno nuevo para meter las cadenas en mayusculas en este
+		Set<String> cadenasMayusculas = new HashSet<>();
+		
+		for (String string : cadenas) {
+			cadenasMayusculas.add(string.toUpperCase());
+		}
+		System.out.print(cadenasMayusculas);
+		
 		
 		
 		if (cadenas.contains("")) {
 			System.out.println("Hay alguna palabra vacía");
 		}
 		
+		cadenasMayusculas.removeIf(s-> s.length() < 6);
+		System.out.println(cadenasMayusculas);
 		
-		Iterator<String> it = cadenas.iterator();
-		while(it.hasNext()) {
-			String palabra = it.next();
-			if (palabra.length() < 6) {
-				it.remove();
-			}
-			
-		}
+	// la s es una varibale que representa cada elemento del set y no hace falfa crearla antes, seguido de -> s. y la condición 
+		//puedo hacer la conción lo larga que yo quiera con 
+		//por ejemplo cadenas.removeIf(s -> s.length() < 6 || s.startsWith("j"));
+		
+		
+//		Iterator<String> it = cadenasMayusculas.iterator();
+//		while(it.hasNext()) {
+//			String palabra = it.next();
+//			if (palabra.length() < 6) {
+//				it.remove();
+//			}
+//			
+//		}
+		
 		
 		// ALTERNATIVA CON ITERATOR EN EL FOR
 //		for (Iterator iterator = palabras.iterator(); iterator.hasNext();) {
@@ -47,7 +62,7 @@ public class ej49 {
 //		}
 
 		
-		System.out.println(cadenas);
+		
 		
 		
 		
