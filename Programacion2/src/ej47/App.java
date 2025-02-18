@@ -1,5 +1,7 @@
 package ej47;
 
+import java.math.BigDecimal;
+
 public class App {
 	public static void main(String[] args) {
 		Cliente blas = new Cliente( "12345678x","Blas de los Montes");
@@ -8,7 +10,7 @@ public class App {
 		
 		
 		Ropa ropa=new Ropa();
-		ropa.setPrecio(20.0);
+		ropa.setPrecio(new BigDecimal(20));
 		ropa.setDescripcion("Poncho");
 		ropa.setColor("azul");
 		ropa.setTalla("XL");
@@ -19,7 +21,7 @@ public class App {
 		System.out.println(carro.getArticulos());
 		
 		Libro libro= new Libro();
-		libro.setPrecio(15.00);
+		libro.setPrecio(new BigDecimal(15));
 		libro.setDescripcion("Así habló Zaratustra");
 		libro.setAutor("Nietzsche");
 		 

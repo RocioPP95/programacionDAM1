@@ -1,5 +1,8 @@
 package ej47;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -49,27 +52,29 @@ public class Carrito {
 		return this.articulos.size();
 	}
 
-	public Double getTotal() {
-		Double total = 0.0;
+	public BigDecimal getTotal() {
+		BigDecimal total = new BigDecimal(0);
 		for (Articulo articulo : articulos) {
-			total = total + articulo.getPrecio();
+			total = total.add(articulo.getPrecio()) ;
 		}
 		return total;
 	}
 
-	public Double getPrecioMedio() {
-		if (this.articulos.isEmpty()) {
-			return 0.0;
-
-		} else
-			return getTotal() / this.articulos.size();
+	public BigDecimal getPrecioMedio() {
+		if (getCantidad() == 0) {
+			return BigDecimal.ZERO;
+		}
+		BigDecimal cantidadDec = new BigDecimal(getCantidad());
+		return getTotal().divide(cantidadDec, 2, RoundingMode.HALF_DOWN);
 	}
+
 
 	public String toString() {
 		DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 		String fecha = this.fechaActualizacion.format(formato);
+		DecimalFormat formatDecimal=new DecimalFormat("#,###.00€");
 
-		return "Nombre: " + cliente.getNombre() + " DNI:" + cliente.getDni() + " total: " + getTotal() + "euros"
+		return "Nombre: " + cliente.getNombre() + " DNI:" + cliente.getDni() + " total: " +formatDecimal.format(getTotal())  + "euros"
 				+ " fecha: " + fecha;
 	}
 

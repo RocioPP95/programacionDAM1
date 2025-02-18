@@ -31,7 +31,7 @@ public class ej49 {
 		
 		
 		
-		if (cadenas.contains("")) {
+		if (cadenasMayusculas.contains("")) {
 			System.out.println("Hay alguna palabra vacía");
 		}
 		
