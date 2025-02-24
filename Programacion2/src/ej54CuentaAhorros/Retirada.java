@@ -1,3 +1,4 @@
+
 package ej54CuentaAhorros;
 
 import java.math.BigDecimal;
@@ -19,9 +20,18 @@ public class Retirada extends Movimiento {
 		String fecha = this.getFecha().format(formato);
 
 		DecimalFormat formato1 = new DecimalFormat("#,##0.00 €");
-		formato1.format(this.getImporte());
-		
-		return "R-"+fecha+"-"+formato1;
+		String cadena="";
+
+		cadena=formato1.format(this.getImporte());
+
+		return "R-"+fecha+"-"+cadena;
+	}
+
+	@Override
+	public BigDecimal getOperacion() {
+		// TODO Auto-generated method stub
+		return importe.negate();
+
 	}
 	
 

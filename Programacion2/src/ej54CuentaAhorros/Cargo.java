@@ -11,6 +11,7 @@ public class Cargo extends Movimiento {
 		super();
 		this.cif = cif;
 		this.setImporte(importe);
+
 	}
 
 	@Override
@@ -20,10 +21,15 @@ public class Cargo extends Movimiento {
 		String fecha = this.getFecha().format(formato);
 
 		DecimalFormat formato1 = new DecimalFormat("#,##0.00 €");
-		formato1.format(this.getImporte());
+		String cadena = formato1.format(this.getImporte());
 
-		return "C-" + fecha +" - "+ formato1+" - "+this.cif;
+		return "C-" + fecha + " - " + cadena + " - " + this.cif;
+	}
+
+	@Override
+	public BigDecimal getOperacion() {
+		// TODO Auto-generated method stub
+		return importe.negate();
 	}
 
 }
-

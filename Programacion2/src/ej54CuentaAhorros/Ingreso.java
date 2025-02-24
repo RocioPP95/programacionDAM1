@@ -1,3 +1,4 @@
+
 package ej54CuentaAhorros;
 
 import java.math.BigDecimal;
@@ -19,9 +20,16 @@ public class Ingreso extends Movimiento {
 		String fecha = this.getFecha().format(formato);
 
 		DecimalFormat formato1 = new DecimalFormat("#,##0.00 €");
-		formato1.format(this.getImporte());
+		String cadena="";
+		cadena=formato1.format(this.getImporte());
 		
-		return "I-"+fecha+" - "+formato1+" - "+this.descripcion;
+		return "I-"+fecha+" - "+cadena+" - "+this.descripcion;
+	}
+
+	@Override
+	public BigDecimal getOperacion() {
+		// TODO Auto-generated method stub
+		return importe;
 	}
 
 }

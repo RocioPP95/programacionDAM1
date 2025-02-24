@@ -5,8 +5,8 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
 public abstract class Movimiento {
-	private LocalDate fecha;
-	private BigDecimal importe;
+	protected LocalDate fecha;
+	protected BigDecimal importe;
 
 	public Movimiento() {
 		super();
@@ -23,8 +23,11 @@ public abstract class Movimiento {
 		return fecha;
 	}
 
-	public BigDecimal getImporte() {
+	public  BigDecimal getImporte() {
 		return importe;
 	}
+	
+public abstract BigDecimal getOperacion() ;
+	
 
 }
