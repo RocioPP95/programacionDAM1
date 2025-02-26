@@ -1,6 +1,7 @@
 package repaso1;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.time.LocalDate;
 import java.time.Period;
 
@@ -71,8 +72,7 @@ public class Smartphone {
 	}
 
 	public BigDecimal getPrecioMasIva() {
-		BigDecimal precio1 = (this.precio).multiply(new BigDecimal(1.21));
-		return precio1;
+		return (this.precio).multiply(new BigDecimal(1.21)).setScale(2, RoundingMode.HALF_DOWN);
 
 	}
 
@@ -86,14 +86,14 @@ public class Smartphone {
 	}
 
 	public Boolean isDatosCompletos() {
-		if (imei == null || imei.isEmpty() || this.precio == null) {
+		if (imei == null || imei.isBlank() || this.precio == null) {
 			return false;
 		}
 		return true;
 	}
 
 	public Boolean isGratis() {
-		return true;
+		return precio.equals(BigDecimal.ZERO);//true
 	}
 
 	public void rebajar() {

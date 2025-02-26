@@ -2,11 +2,11 @@ package repaso2FijoMovil;
 
 public class Movil extends Telefono {
 
-	private String gps;
+	private LocalizacionGps loca;
 
-	public Movil(Integer numero, String posicionGps) {
+	public Movil(Integer numero, LocalizacionGps posicionGps) {
 		super(numero);
-		this.gps = posicionGps;
+		this.loca = posicionGps;
 	}
 
 	
