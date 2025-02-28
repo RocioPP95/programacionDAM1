@@ -1,4 +1,4 @@
-package libreria;
+package repaso4Libreria;
 
 import java.time.LocalDate;
 import java.time.Period;
@@ -17,6 +17,14 @@ public class Libreria {
 		this.listaLibros = new ArrayList<>();
 		this.direccion = direccion;
 		this.tlfn = tlfn;
+	}
+
+	public List<Libro> getListaLibros() {
+		return listaLibros;
+	}
+
+	public void setListaLibros(List<Libro> listaLibros) {
+		this.listaLibros = listaLibros;
 	}
 
 	public Libro obtenerLibroMasAntiguo() {

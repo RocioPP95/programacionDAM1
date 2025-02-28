@@ -1,4 +1,4 @@
-package libreria;
+package repaso4Libreria;
 
 
 public class Digital extends Libro {

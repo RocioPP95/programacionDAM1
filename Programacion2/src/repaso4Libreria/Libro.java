@@ -1,4 +1,4 @@
-package libreria;
+package repaso4Libreria;
 
 import java.time.LocalDate;
 
@@ -53,6 +53,12 @@ public abstract class Libro {
 
 	public void setPeso(Integer peso) {
 		this.peso = peso;
+	}
+
+	@Override
+	public String toString() {
+		return "Libro [titulo=" + titulo + ", autor=" + autor + ", fecha=" + fecha + ", numPaginas=" + numPaginas
+				+ ", peso=" + peso + "]";
 	}
 	
 
