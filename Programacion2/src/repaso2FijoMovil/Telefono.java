@@ -20,11 +20,13 @@ public abstract class Telefono {
 		if (this.numero.equals(numero)) {
 			System.out.println("Comunicando");
 
-		} else
+		} else {
 			
 		System.out.println("En comunicación");
 		enLlamada = true;
+		}
 	}
+	
 
 	public void colgar() {
 		if (enLlamada == true) {

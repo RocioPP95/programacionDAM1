@@ -8,6 +8,10 @@ public class App {
 		
 		System.out.println(movil.consultarNumero());
 		System.out.println(fijo.consultarNumero());
+		movil.marcar(654654654);
+		movil.marcar(610610610);
 		movil.colgar();
+		movil.colgar();
+		
 	}
 }
