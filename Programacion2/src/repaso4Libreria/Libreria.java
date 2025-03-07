@@ -28,6 +28,9 @@ public class Libreria {
 	}
 
 	public Libro obtenerLibroMasAntiguo() {
+		if (listaLibros == null || listaLibros.isEmpty()) {
+			return null;
+		}
 		LocalDate fecha = LocalDate.now();
 		Libro menor = null;
 		for (int i = 0; i < listaLibros.size(); i++) {
@@ -51,9 +54,9 @@ public class Libreria {
 	}
 
 	public Integer obtenerNumPaginasMedio() {
+		
 		return obtenerPesoTotalDeLibros() / listaLibros.size();
 
 	}
-	
-}
 
+}
