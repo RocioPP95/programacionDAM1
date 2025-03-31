@@ -11,17 +11,18 @@ public class App {
 		String capital;
 
 		while (contador < 5) {
-			System.out.println("Introduce un país:");
-			pais = sc.nextLine();
 
-			System.out.println("Introduce su capital:");
-			capital = sc.nextLine();
+		}
+		contador++;
+		System.out.println("Introduce un país:");
+		pais = sc.nextLine();
 
-			if (geografia.agregarPais(pais, capital) == true) {
-				contador--;
-			} else
-				geografia.agregarPais(pais, capital);
-			contador++;
+		System.out.println("Introduce su capital:");
+		capital = sc.nextLine();
+
+		if (geografia.agregarPais(pais, capital) == true) {
+			contador--;
+
 		}
 		geografia.imprimirPaises();
 		System.out.println(geografia.calcularLongitudMediaPaises());

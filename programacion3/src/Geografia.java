@@ -44,6 +44,7 @@ public class Geografia {
 	}
 
 	public void eliminarPais(String pais) {
+		// no hace falta hacer el remove if porque no hace falta recorerlo
 		paises.entrySet().removeIf(key -> key.equals(pais.toUpperCase()));
 	}
 
@@ -68,11 +69,11 @@ public class Geografia {
 		// paises.entrySet().removeIf(entry -> !eliminado[0] &&
 		// entry.getValue().startsWith(letra.toUpperCase()) && (eliminado[0] = true));
 
-		Iterator<String> it = paises.keySet().iterator();
-		while (it.hasNext()) {
-			String pais = it.next();
+		Iterator<String> iterator = paises.keySet().iterator();
+		while (iterator.hasNext()) {
+			String pais = iterator.next();
 			if (paises.get(pais).startsWith(letra.toUpperCase())) {
-				it.remove();
+				iterator.remove();
 				break;
 			}
 
@@ -83,8 +84,8 @@ public class Geografia {
 	public Integer numeroPaisesConCapitalLetra(String letra) {
 		Integer contador = 0;
 
-		for (String pais : paises.values()) {
-			if (pais.startsWith(letra.toUpperCase())) {
+		for (String capital : paises.values()) {
+			if (capital.startsWith(letra.toUpperCase())) {
 				contador++;
 			}
 		}
@@ -93,22 +94,33 @@ public class Geografia {
 	}
 
 	public void imprimirNumeroPaisesLetra(String letra) {
+		Boolean existe = false;
 		for (Entry<String, String> entry : paises.entrySet()) {
 
 			if (entry.getValue().startsWith(letra.toUpperCase())) {
+				existe = true;
 				System.out.println(entry.getKey() + " " + entry.getValue());
 			}
 
 		}
-		System.out.println("Ninguna capital del mapa comienza por la letra " + letra.toUpperCase());
+		if (existe == false) {
+			System.out.println("Ninguna capital del mapa comienza por la letra " + letra.toUpperCase());
+
+		}
 
 	}
 
 	public void mismaLetra() {
+		
+		Boolean existe = false;
 		for (Map.Entry<String, String> entry : paises.entrySet()) {
 			if (entry.getKey().substring(0, 1).equals(entry.getValue().substring(0, 1))) {
-				imprimirPaises();
+				existe=true;
+				System.out.println("PAIS: " + entry.getKey() + "\n – CAPITAL: " + entry.getValue());
 			}
+		}
+		if (existe==false) {
+			System.out.println("No existe");
 		}
 	}
 
