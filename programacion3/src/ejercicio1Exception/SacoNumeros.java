@@ -35,18 +35,23 @@ public class SacoNumeros {
 	}
 
 	public BigDecimal division() {
-		BigDecimal resultado = BigDecimal.ZERO;
-		for (int i = 0; i < this.numeros.size(); i++) {
+		if (numeros.isEmpty()) {
+			return BigDecimal.ZERO;
+
+		}
+
+		BigDecimal division = BigDecimal.valueOf(numeros.getFirst());
+		for (int i = 1; i < this.numeros.size(); i++) {
 			try {
-				resultado = BigDecimal.valueOf(numeros.get(i)).divide(BigDecimal.valueOf(numeros.get(i + 1)), 2,
-						RoundingMode.HALF_UP);
-				return resultado;
+				BigDecimal nextDivisisor = BigDecimal.valueOf(numeros.get(i));
+				division = division.divide(nextDivisisor, 2, RoundingMode.HALF_UP);
+
 			} catch (Exception e) {
-				return resultado;
+				return BigDecimal.ZERO;
 			}
 
 		}
-		return resultado;
 
+		return division;
 	}
 }
