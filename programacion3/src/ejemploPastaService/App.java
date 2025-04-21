@@ -2,6 +2,7 @@ package ejemploPastaService;
 
 import java.math.BigDecimal;
 import java.sql.SQLException;
+import java.util.List;
 
 public class App {
 
@@ -21,12 +22,41 @@ public class App {
 //			e.printStackTrace();
 //		}
 
+		/*
+		 * try { service.actualizarConversionDivisa("EUR", BigDecimal.TWO); } catch
+		 * (SQLException e) {
+		 * 
+		 * e.printStackTrace(); }
+		 */
+
+//		try {
+//			Integer cant = service.borrarDivisa("BLAS");
+//			System.out.println("TOdo ok " + cant);
+//		} catch (DivisaException e) {
+//
+//			e.printStackTrace();
+//		} catch (DivisaNotFoundException e) {
+//
+//			System.out.println(e.getMessage());
+//		}
+
 		try {
-			service.actualizarConversionDivisa("EUR", BigDecimal.TWO);
+			System.out.println(service.buscarDivisas("Eu"));
 		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (DivisaNotFoundException e) {
 
 			e.printStackTrace();
 		}
 
+		try {
+			System.out.println(service.consultarDivisa("EUR"));
+		} catch (DivisaException e) {
+			e.printStackTrace();
+		} catch (DivisaNotFoundException e) {
+			e.printStackTrace();
+
+		}
 	}
+
 }

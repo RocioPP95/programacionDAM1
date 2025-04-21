@@ -41,4 +41,10 @@ public class Divisa {
 		this.conversion = conversion;
 	}
 
+	@Override
+	public String toString() {
+		return "Divisa [codigo=" + codigo + ", descripcion=" + descripcion + ", pais=" + pais + ", conversion="
+				+ conversion + "]";
+	}
+
 }
