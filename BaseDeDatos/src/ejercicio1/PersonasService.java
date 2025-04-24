@@ -13,7 +13,7 @@ import java.util.List;
 
 public class PersonasService extends Service {
 
-	public Persona consultarPersona(String dni) throws  PersonaNotFoundException, PersonaException {
+	public Persona consultarPersona(String dni) throws PersonaNotFoundException, PersonaException {
 		// 1º abrir conexion (asegurandonos que luego se cierra)
 		try (Connection conn = abrirConexion()) {
 
@@ -78,7 +78,7 @@ public class PersonasService extends Service {
 
 	}
 
-	public void insertarPersona(Persona persona) throws SQLException {
+	public void insertarPersona(Persona persona) {
 
 		// 1º abrir conexion (asegurandonos que luego se cierra)
 		try (Connection conn = abrirConexion()) {
@@ -97,6 +97,33 @@ public class PersonasService extends Service {
 			pstmt.setString(2, persona.getNombre());
 			pstmt.setString(3, persona.getApellidos());
 			pstmt.setDate(4, Date.valueOf(persona.getFechaNacimiento()));
+
+			// 5º ejecutar
+			pstmt.execute();
+		} catch (SQLException e) {
+
+			e.printStackTrace();
+		}
+	}
+
+	public void actualizarPersona(Persona persona) throws SQLException {
+		// 1º abrir conexion (asegurandonos que luego se cierra)
+		try (Connection conn = abrirConexion()) {
+
+			// 2º escribir SQL con una cadena con parámetros
+
+			String sql = "update personas set nombre =?  apellidos=?  fecha_nacimiento=?  where dni=?";
+
+			// 3º crear preparedStatement a partir de la conexion
+
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+
+			// 4º Indicamos los valores de los parámetros
+
+			pstmt.setString(1, persona.getNombre());
+			pstmt.setString(2, persona.getApellidos());
+			pstmt.setDate(3, Date.valueOf(persona.getFechaNacimiento()));
+			pstmt.setString(4, persona.getDni());
 
 			// 5º ejecutar
 			pstmt.execute();
