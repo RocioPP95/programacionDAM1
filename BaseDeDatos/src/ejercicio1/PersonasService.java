@@ -106,27 +106,43 @@ public class PersonasService extends Service {
 		}
 	}
 
-	public void actualizarPersona(Persona persona) throws SQLException {
-		// 1º abrir conexion (asegurandonos que luego se cierra)
-		try (Connection conn = abrirConexion()) {
-
-			// 2º escribir SQL con una cadena con parámetros
-
-			String sql = "update personas set nombre =?  apellidos=?  fecha_nacimiento=?  where dni=?";
-
-			// 3º crear preparedStatement a partir de la conexion
-
+	public void actualizarPersona(Persona persona) throws PersonaException, PersonaNotFoundException {
+		try(Connection conn = abrirConexion()){
+			String sql = "UPDATE PERSONAS SET NOMBRE = ?, APELLIDOS = ?, FECHA_NACIMIENTO = ? WHERE DNI = ? ";
 			PreparedStatement pstmt = conn.prepareStatement(sql);
-
-			// 4º Indicamos los valores de los parámetros
-
 			pstmt.setString(1, persona.getNombre());
 			pstmt.setString(2, persona.getApellidos());
 			pstmt.setDate(3, Date.valueOf(persona.getFechaNacimiento()));
 			pstmt.setString(4, persona.getDni());
-
-			// 5º ejecutar
-			pstmt.execute();
+			Integer numeroActualizados =pstmt.executeUpdate();
+			if (numeroActualizados==0) {
+				throw new PersonaNotFoundException("No existe persona con ese dni");
+				
+			}
 		}
+		catch(SQLException e) {
+			throw new PersonaException("Error actualizando en BBDD", e);
+		}
+		
 	}
+	
+	
+	public  void borrarPersona(String dni) throws PersonaException, PersonaNotFoundException {
+		try(Connection conn = abrirConexion()){
+			String sql = "DELETE FROM PERSONAS WHERE DNI = ? ";
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, dni);
+			Integer registrosAfectados= pstmt.executeUpdate();
+			if (registrosAfectados ==0) {
+				throw new PersonaNotFoundException("No existe persona con ese dni");
+				
+			}
+		}
+		catch(SQLException e) {
+			throw new PersonaException("Error borrando en BBDD", e);
+		}
+		
+	}
+
+
 }

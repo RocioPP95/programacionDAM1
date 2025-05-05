@@ -9,62 +9,96 @@ import java.util.Scanner;
 public class App {
 
 	private static PersonasService service;
+	private static Scanner sc;
 
 	public static void main(String[] args) {
-		try (Scanner sc = new Scanner(System.in)) {
+		sc = new Scanner(System.in);
+		try {
 			service = new PersonasService();
-			iniciar(sc);
-			consultarPorDni(sc);
-			consultarPorNombreApellidos(sc);
-			insertarDatos(sc);
-
-		} catch (PersonaNotFoundException e) {
-			System.out.println(e.getMessage());
+			while (true) {
+				try {
+					Integer opcion = mostrarMenu();
+					if (opcion == 1) {
+						consultarPorDni();
+					} else if (opcion == 2) {
+						consultarPorNombreApellidos();
+					} else if (opcion == 3) {
+						crearPersona();
+					} else if (opcion == 4) {
+						actualizarPersona();
+					} else if (opcion == 5) {
+						borrarPersona();
+					} else if (opcion == 0) {
+						System.out.println("Bye bye!!");
+						return;
+					} else {
+						System.out.println("Opción no válida");
+					}
+				} catch (PersonaNotFoundException e) {
+					System.out.println(e.getMessage());
+				}
+			}
 		} catch (PersonaException e) {
 			e.printStackTrace();
+		} finally {
+			sc.close();
 		}
-
 	}
 
-	private static void iniciar(Scanner sc) throws PersonaException, PersonaNotFoundException {
-		String opcion;
-		do {
-			System.out.println("Selecciona una opción:\n 1.Consultar por Dni \n 2.Consultar por nombre ya pellidos"
-					+ " \n 3.Insertar Datos \n 4.Actualizar Persona \n 5.Borrar persona  \n 6.Exit ");
-			opcion = sc.nextLine();
-			if (opcion.equals("1")) {
-				consultarPorDni(sc);
-			}
-			if (opcion.equals("2")) {
-				consultarPorNombreApellidos(sc);
-			}
-			if (opcion.equals("3")) {
-				insertarDatos(sc);
-			}
-			if (opcion.equals("4")) {
-
-			}
-			if (opcion.equals("5")) {
-
-			}
-			if (opcion.equals("6")) {
-
-			}
-		} while (!opcion.equals("6"));
-
+	private static void borrarPersona() throws PersonaException, PersonaNotFoundException {
+		System.out.println("Indique DNI de la persona que quiere borrar:");
+		service.borrarPersona(pedirDato("DNI"));
 	}
 
-	private static void consultarPorDni(Scanner sc) throws PersonaException, PersonaNotFoundException {
-		System.out.println("Dime DNI que estás buscando");
-		String dni = sc.nextLine();
+	private static void actualizarPersona() throws PersonaException, PersonaNotFoundException {
+		System.out.println("Indique DNI de la pesona que quiere actualizar y los datos nuevos.");
+		Persona persona = solicitarDatosPersona();
+		try {
+			persona.validar();
+			service.actualizarPersona(persona);
+		} catch (DatosIncompletosException e) {
+			System.out.println(e.getMessage());
+			actualizarPersona();
+		}
+	}
+
+	private static void crearPersona() throws PersonaException {
+		System.out.println("Indique DNI y datos de la nueva persona:");
+		Persona persona = solicitarDatosPersona();
+		try {
+			persona.validar();
+			service.insertarPersona(persona);
+		} catch (DatosIncompletosException e) {
+			System.out.println(e.getMessage());
+			crearPersona();
+		}
+	}
+
+	private static Persona solicitarDatosPersona() {
+		Persona persona = new Persona();
+		persona.setDni(pedirDato("DNI"));
+		persona.setNombre(pedirDato("Nombre"));
+		persona.setApellidos(pedirDato("Apellidos"));
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+		String fecha = pedirDato("Fecha nacimiento (DD/MM/YYYY)");
+		persona.setFechaNacimiento(LocalDate.parse(fecha, formatter));
+		return persona;
+	}
+
+	private static String pedirDato(String dato) {
+		System.out.println("Indicar " + dato);
+		return sc.nextLine();
+	}
+
+	private static void consultarPorDni() throws PersonaException, PersonaNotFoundException {
+		String dni = pedirDato("DNI buscado");
 		Persona persona = service.consultarPersona(dni);
 		System.out.println("Aquí tienes tu persona:");
 		System.out.println(persona);
 	}
 
-	private static void consultarPorNombreApellidos(Scanner sc) throws PersonaException, PersonaNotFoundException {
-		System.out.println("Dime nombre/apellidos que estás buscando");
-		String filtro = sc.nextLine();
+	private static void consultarPorNombreApellidos() throws PersonaException, PersonaNotFoundException {
+		String filtro = pedirDato("Nombre/apellidos que estás buscando");
 		List<Persona> lista = service.buscarPersonas(filtro);
 		System.out.println("Aquí tienes los resultados:");
 		if (lista.isEmpty()) {
@@ -75,29 +109,17 @@ public class App {
 		}
 	}
 
-	private static void insertarDatos(Scanner sc) {
-
-		Persona persona = new Persona();
-		System.out.println("Inserta dni");
-		persona.setDni(sc.nextLine());
-		System.out.println("Inserta nombre");
-		persona.setNombre(sc.nextLine());
-		System.out.println("Inserta apellidos");
-		persona.setApellidos(sc.nextLine());
-		System.out.println("Inserta fecha nacimiento");
-		String cadena = sc.nextLine();
-		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-		LocalDate fecha = LocalDate.parse(cadena, formatter);
-		persona.setFechaNacimiento(fecha);
-		try {
-			persona.validar();
-			service.insertarPersona(persona);
-		} catch (DatosIncompletosException e) {
-			System.out.println(e.getMessage());
-			insertarDatos(sc);
-		}
+	private static Integer mostrarMenu() {
+		System.out.println("Menú:");
+		System.out.println("\t1. Consultar por DNI");
+		System.out.println("\t2. Consultar por filtro");
+		System.out.println("\t3. Insertar nueva persona");
+		System.out.println("\t4. Actualizar datos persona");
+		System.out.println("\t5. Borrar persona");
+		System.out.println("\t0. Salir");
+		Integer opcion = sc.nextInt();
+		sc.nextLine();
+		return opcion;
 	}
-	
-
 
 }
