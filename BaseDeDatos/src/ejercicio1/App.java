@@ -67,7 +67,7 @@ public class App {
 		Persona persona = solicitarDatosPersona();
 		try {
 			persona.validar();
-			service.insertarPersona(persona);
+			service.crearPersona(persona);
 		} catch (DatosIncompletosException e) {
 			System.out.println(e.getMessage());
 			crearPersona();

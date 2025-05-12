@@ -78,7 +78,7 @@ public class PersonasService extends Service {
 
 	}
 
-	public void insertarPersona(Persona persona) {
+	public void crearPersona(Persona persona) {
 
 		// 1º abrir conexion (asegurandonos que luego se cierra)
 		try (Connection conn = abrirConexion()) {
@@ -107,42 +107,67 @@ public class PersonasService extends Service {
 	}
 
 	public void actualizarPersona(Persona persona) throws PersonaException, PersonaNotFoundException {
-		try(Connection conn = abrirConexion()){
+		try (Connection conn = abrirConexion()) {
 			String sql = "UPDATE PERSONAS SET NOMBRE = ?, APELLIDOS = ?, FECHA_NACIMIENTO = ? WHERE DNI = ? ";
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, persona.getNombre());
 			pstmt.setString(2, persona.getApellidos());
 			pstmt.setDate(3, Date.valueOf(persona.getFechaNacimiento()));
 			pstmt.setString(4, persona.getDni());
-			Integer numeroActualizados =pstmt.executeUpdate();
-			if (numeroActualizados==0) {
+			Integer numeroActualizados = pstmt.executeUpdate();
+			if (numeroActualizados == 0) {
 				throw new PersonaNotFoundException("No existe persona con ese dni");
-				
+
 			}
-		}
-		catch(SQLException e) {
+		} catch (SQLException e) {
 			throw new PersonaException("Error actualizando en BBDD", e);
 		}
-		
+
 	}
-	
-	
-	public  void borrarPersona(String dni) throws PersonaException, PersonaNotFoundException {
-		try(Connection conn = abrirConexion()){
+
+	public void borrarPersona(String dni) throws PersonaException, PersonaNotFoundException {
+		try (Connection conn = abrirConexion()) {
 			String sql = "DELETE FROM PERSONAS WHERE DNI = ? ";
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, dni);
-			Integer registrosAfectados= pstmt.executeUpdate();
-			if (registrosAfectados ==0) {
+			Integer registrosAfectados = pstmt.executeUpdate();
+			if (registrosAfectados == 0) {
 				throw new PersonaNotFoundException("No existe persona con ese dni");
-				
+
 			}
-		}
-		catch(SQLException e) {
+		} catch (SQLException e) {
 			throw new PersonaException("Error borrando en BBDD", e);
 		}
-		
+
 	}
 
+	public void insertarPersonas(List<Persona> Personas) throws PersonaException {
+		try (Connection conn = abrirConexion()) {
 
+			try {
+				conn.setAutoCommit(false);
+				for (Persona persona : Personas) {
+					String sql = "INSERT INTO personas VALUES(?,?, ?,?)";
+
+					PreparedStatement pstmt = conn.prepareStatement(sql);
+
+					pstmt.setString(1, persona.getDni());
+					pstmt.setString(2, persona.getNombre());
+					pstmt.setString(3, persona.getApellidos());
+					pstmt.setDate(4, Date.valueOf(persona.getFechaNacimiento()));
+					pstmt.execute();
+				}
+				conn.commit();
+
+			} catch (SQLException e) {
+				conn.rollback();
+				throw e;
+			}
+		} catch (
+
+		SQLException e) {
+			throw new PersonaException("Erros insertando en BBDD", e);
+		}
+
+	}
 }
